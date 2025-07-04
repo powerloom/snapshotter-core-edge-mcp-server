@@ -1,0 +1,1495 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/pool/{pool_address}/metadata": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Pool Metadata",
+                "description": "Get the metadata for a specific pool.",
+                "operationId": "get_pool_metadata_pool__pool_address__metadata_get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/token/{token_address}/pools": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Pools",
+                "description": "Get the token pools for a specific token.",
+                "operationId": "get_token_pools_token__token_address__pools_get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ethPrice": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Ethprice",
+                "description": "Get ETH price snapshot for a specific block number or latest finalized epoch.\n\nArgs:\n    request: FastAPI request object\n    response: FastAPI response object\n    block_number: Optional block number to get ETH price for. If not provided, uses latest finalized epoch.",
+                "operationId": "get_ethprice_ethPrice_get",
+                "parameters": [{
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ethPrice/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Ethprice",
+                "description": "Get ETH price snapshot for a specific block number or latest finalized epoch.\n\nArgs:\n    request: FastAPI request object\n    response: FastAPI response object\n    block_number: Optional block number to get ETH price for. If not provided, uses latest finalized epoch.",
+                "operationId": "get_ethprice_ethPrice__block_number__get",
+                "parameters": [{
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/token/price/{token_address}/{pool_address}/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Price Pool",
+                "operationId": "get_token_price_pool_token_price__token_address___pool_address___block_number__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }, {
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "string"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/token/price/{token_address}/{pool_address}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Price Pool",
+                "operationId": "get_token_price_pool_token_price__token_address___pool_address__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }, {
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "string"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/base_all_pools/{token_address}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Base Snapshots",
+                "operationId": "get_token_base_snapshots_snapshot_base_all_pools__token_address__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/base/{pool_address}/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Base Snapshot",
+                "operationId": "get_base_snapshot_snapshot_base__pool_address___block_number__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/base/{pool_address}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Base Snapshot",
+                "operationId": "get_base_snapshot_snapshot_base__pool_address__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/trades/{pool_address}/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Trades Snapshot",
+                "operationId": "get_trades_snapshot_snapshot_trades__pool_address___block_number__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/trades/{pool_address}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Trades Snapshot",
+                "operationId": "get_trades_snapshot_snapshot_trades__pool_address__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/allTrades/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get All Trades Snapshot",
+                "operationId": "get_all_trades_snapshot_snapshot_allTrades__block_number__get",
+                "parameters": [{
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/snapshot/allTrades": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get All Trades Snapshot",
+                "operationId": "get_all_trades_snapshot_snapshot_allTrades_get",
+                "parameters": [{
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tokenPrices/all/{token_address}/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Price All",
+                "operationId": "get_token_price_all_tokenPrices_all__token_address___block_number__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tokenPrices/all/{token_address}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Price All",
+                "operationId": "get_token_price_all_tokenPrices_all__token_address__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tradeVolumeAllPools/{token_address}/{time_interval}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Trade Volume Agg All Pools",
+                "operationId": "get_trade_volume_agg_all_pools_tradeVolumeAllPools__token_address___time_interval__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }, {
+                    "name": "time_interval",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Time Interval"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tradeVolume/{pool_address}/{time_interval}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Trade Volume Agg",
+                "operationId": "get_trade_volume_agg_tradeVolume__pool_address___time_interval__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "time_interval",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Time Interval"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/poolTrades/{pool_address}/{start_timestamp}/{end_timestamp}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Pool Trades",
+                "operationId": "get_pool_trades_poolTrades__pool_address___start_timestamp___end_timestamp__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "start_timestamp",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Start Timestamp"
+                    }
+                }, {
+                    "name": "end_timestamp",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "End Timestamp"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/timeSeries/{token_address}/{pool_address}/{time_interval}/{step_seconds}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get Token Price Series",
+                "operationId": "get_token_price_series_timeSeries__token_address___pool_address___time_interval___step_seconds__get",
+                "parameters": [{
+                    "name": "token_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Token Address"
+                    }
+                }, {
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "time_interval",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Time Interval"
+                    }
+                }, {
+                    "name": "step_seconds",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Step Seconds"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dailyActiveTokens": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get daily active tokens with pagination",
+                "description": "Retrieves a paginated list of active tokens for the current day, sorted by frequency. Use page and size parameters to control pagination.",
+                "operationId": "get_daily_active_tokens_dailyActiveTokens_get",
+                "parameters": [{
+                    "name": "page",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "description": "Page number to retrieve (starts at 1)",
+                        "default": 1,
+                        "title": "Page"
+                    },
+                    "description": "Page number to retrieve (starts at 1)",
+                    "example": 1
+                }, {
+                    "name": "size",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1,
+                        "description": "Number of items per page (max 100)",
+                        "default": 50,
+                        "title": "Size"
+                    },
+                    "description": "Number of items per page (max 100)",
+                    "example": 50
+                }, {
+                    "name": "metadata",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "boolean",
+                        "description": "Include token metadata in the response",
+                        "default": false,
+                        "title": "Metadata"
+                    },
+                    "description": "Include token metadata in the response",
+                    "example": false
+                }, {
+                    "name": "time_interval",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer",
+                        "description": "Time interval in seconds",
+                        "default": 86400,
+                        "title": "Time Interval"
+                    },
+                    "description": "Time interval in seconds",
+                    "example": 86400
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Returns a paginated list of active tokens with their frequencies",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dailyActivePools": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Get daily active pools with pagination",
+                "description": "Retrieves a paginated list of active pools for the current day, sorted by frequency. Use page and size parameters to control pagination.",
+                "operationId": "get_daily_active_pools_dailyActivePools_get",
+                "parameters": [{
+                    "name": "page",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "description": "Page number to retrieve (starts at 1)",
+                        "default": 1,
+                        "title": "Page"
+                    },
+                    "description": "Page number to retrieve (starts at 1)",
+                    "example": 1
+                }, {
+                    "name": "size",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer",
+                        "maximum": 100,
+                        "minimum": 1,
+                        "description": "Number of items per page (max 100)",
+                        "default": 50,
+                        "title": "Size"
+                    },
+                    "description": "Number of items per page (max 100)",
+                    "example": 50
+                }, {
+                    "name": "metadata",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "boolean",
+                        "description": "Include pool metadata in the response",
+                        "default": false,
+                        "title": "Metadata"
+                    },
+                    "description": "Include pool metadata in the response",
+                    "example": false
+                }, {
+                    "name": "time_interval",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "type": "integer",
+                        "description": "Time interval in seconds",
+                        "default": 86400,
+                        "title": "Time Interval"
+                    },
+                    "description": "Time interval in seconds",
+                    "example": 86400
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Returns a paginated list of active pools with their frequencies",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/poolData/{pool_address}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Returns the base snapshot for a given pool address and last finalized epoch/block number",
+                "operationId": "get_pool_data_poolData__pool_address__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/poolData/{pool_address}/{block_number}": {
+            "get": {
+                "tags": ["uniswap"],
+                "summary": "Returns the base snapshot for a given pool address and block number",
+                "operationId": "get_pool_data_poolData__pool_address___block_number__get",
+                "parameters": [{
+                    "name": "pool_address",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Pool Address"
+                    }
+                }, {
+                    "name": "block_number",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "anyOf": [{
+                            "type": "integer"
+                        }, {
+                            "type": "null"
+                        }],
+                        "title": "Block Number"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/health": {
+            "get": {
+                "summary": "Health Check",
+                "description": "Endpoint to check the health of the Snapshotter service.\n\nParameters:\nrequest (Request): The incoming request object.\nresponse (Response): The outgoing response object.\n\nReturns:\ndict: A dictionary containing the status of the service.",
+                "operationId": "health_check_health_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/current_epoch": {
+            "get": {
+                "summary": "Get Current Epoch",
+                "description": "Get the current epoch data from the protocol state contract.\n\nArgs:\n    request (Request): The incoming request object.\n    response (Response): The outgoing response object.\n\nReturns:\n    dict: A dictionary containing the current epoch data.",
+                "operationId": "get_current_epoch_current_epoch_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/epoch/{epoch_id}": {
+            "get": {
+                "summary": "Get Epoch Info",
+                "description": "Get epoch information for a given epoch ID.\n\nArgs:\n    request (Request): The incoming request object.\n    response (Response): The outgoing response object.\n    epoch_id (int): The epoch ID for which to retrieve information.\n\nReturns:\n    dict: A dictionary containing epoch information including timestamp, block number, and epoch end.",
+                "operationId": "get_epoch_info_epoch__epoch_id__get",
+                "parameters": [{
+                    "name": "epoch_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Epoch Id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/last_finalized_epoch/{project_id}": {
+            "get": {
+                "summary": "Get Project Last Finalized Epoch Info",
+                "description": "Get the last finalized epoch information for a given project.\n\nArgs:\n    request (Request): The incoming request object.\n    response (Response): The outgoing response object.\n    project_id (str): The ID of the project to get the last finalized epoch information for.\n\nReturns:\n    dict: A dictionary containing the last finalized epoch information for the given project.",
+                "operationId": "get_project_last_finalized_epoch_info_last_finalized_epoch__project_id__get",
+                "parameters": [{
+                    "name": "project_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Project Id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/data/{epoch_id}/{project_id}/": {
+            "get": {
+                "summary": "Get Data For Project Id Epoch Id",
+                "description": "Get data for a given project and epoch ID.\n\nArgs:\n    request (Request): The incoming request.\n    response (Response): The outgoing response.\n    project_id (str): The ID of the project.\n    epoch_id (int): The ID of the epoch.\n\nReturns:\n    dict: The data for the given project and epoch ID.",
+                "operationId": "get_data_for_project_id_epoch_id_data__epoch_id___project_id___get",
+                "parameters": [{
+                    "name": "project_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Project Id"
+                    }
+                }, {
+                    "name": "epoch_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Epoch Id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cid/{epoch_id}/{project_id}/": {
+            "get": {
+                "summary": "Get Finalized Cid For Project Id Epoch Id",
+                "description": "Get finalized cid for a given project_id and epoch_id.\n\nArgs:\n    request (Request): The incoming request.\n    response (Response): The outgoing response.\n    project_id (str): The project id.\n    epoch_id (int): The epoch id.\n\nReturns:\n    dict: The finalized cid for the given project_id and epoch_id.",
+                "operationId": "get_finalized_cid_for_project_id_epoch_id_cid__epoch_id___project_id___get",
+                "parameters": [{
+                    "name": "project_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Project Id"
+                    }
+                }, {
+                    "name": "epoch_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Epoch Id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task_status": {
+            "post": {
+                "summary": "Get Task Status Post",
+                "description": "Endpoint to get the status of a task for a given wallet address.\n\nArgs:\n    request (Request): The incoming request object.\n    response (Response): The outgoing response object.\n    task_status_request (TaskStatusRequest): The request body containing the task type and wallet address.\n\nReturns:\n    dict: A dictionary containing the status of the task and a message.",
+                "operationId": "get_task_status_post_task_status_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TaskStatusRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/time_series/{epoch_id}/{start_time}/{step_seconds}/{project_id}": {
+            "get": {
+                "summary": "Get Time Series Data For Project Id",
+                "description": "Get data points at each step begining at start_time until current_epoch for project_id.\n\nArgs:\n    request (Request): The incoming request.\n    response (Response): The outgoing response.\n    epoch_id (int): The epoch ID to end the series at.\n    start_time (int): Unix timestamp in seconds of when to begin data\n    step_seconds (int): Length of time in seconds between data points to gather\n    project_id (str): The ID of the project to get the data points for.\n\nReturns:\n    dict: The data for the given project and epoch ID.",
+                "operationId": "get_time_series_data_for_project_id_time_series__epoch_id___start_time___step_seconds___project_id__get",
+                "parameters": [{
+                    "name": "epoch_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Epoch Id"
+                    }
+                }, {
+                    "name": "start_time",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Start Time"
+                    }
+                }, {
+                    "name": "step_seconds",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer",
+                        "title": "Step Seconds"
+                    }
+                }, {
+                    "name": "project_id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string",
+                        "title": "Project Id"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "HTTPValidationError": {
+                "properties": {
+                    "detail": {
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        },
+                        "type": "array",
+                        "title": "Detail"
+                    }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
+            },
+            "TaskStatusRequest": {
+                "properties": {
+                    "task_type": {
+                        "type": "string",
+                        "title": "Task Type"
+                    },
+                    "wallet_address": {
+                        "type": "string",
+                        "title": "Wallet Address"
+                    }
+                },
+                "type": "object",
+                "required": ["task_type", "wallet_address"],
+                "title": "TaskStatusRequest",
+                "description": "Request for the status of a task."
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
+                            "anyOf": [{
+                                "type": "string"
+                            }, {
+                                "type": "integer"
+                            }]
+                        },
+                        "type": "array",
+                        "title": "Location"
+                    },
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
+                    }
+                },
+                "type": "object",
+                "required": ["loc", "msg", "type"],
+                "title": "ValidationError"
+            }
+        }
+    }
+}

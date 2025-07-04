@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "SnapshotterMCP": {
+      "command": "python", // Or the command to launch your server script
+      "args": ["main.py"], // Path to your server script
+      "env": {
+        "FASTMCP_TRANSPORT": "stdio" // Specify the transport
+      },
+      "disabled": false
+    }
+  }
+}
+
