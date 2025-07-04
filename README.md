@@ -42,7 +42,7 @@ gemini
 Run the following command to start the server:
 
 ```
-mcp
+/mcp
 
 ℹ Configured MCP servers:
  
