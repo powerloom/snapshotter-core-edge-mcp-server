@@ -106,11 +106,11 @@ class TradeData(BaseModel):
     calculated_token0_amount: float
     calculated_token1_amount: float
     calculated_trade_amount_usd: float
-    liquidity: int
-    recipient: str
-    sender: str
-    sqrtPriceX96: int
-    tick: int
+    liquidity: Optional[int] = None
+    recipient: Optional[str] = None
+    sender: Optional[str] = None
+    sqrtPriceX96: Optional[int] = None
+    tick: Optional[int] = None
 
 
 class Trade(BaseModel):
