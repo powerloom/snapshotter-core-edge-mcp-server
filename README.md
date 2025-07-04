@@ -19,7 +19,7 @@ This is the MCP (Multi-Chain Protocol) server for the Snapshotter Core project.
     If you don't have Poetry installed, follow the instructions [here](https://python-poetry.org/docs/#installation).
 
     ```bash
-    poetry install
+    poetry install --no-root
     ```
 
 ## Running the Application
