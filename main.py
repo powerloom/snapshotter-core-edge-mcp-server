@@ -490,4 +490,36 @@ async def get_finalized_cid_for_project_id_epoch_id(project_id: str, epoch_id: i
     return await _get_finalized_cid_for_project_id_epoch_id(project_id, epoch_id)
 
 if __name__ == "__main__":
-    mcp.run()
+    import sys
+    
+    # Default values
+    transport = "stdio"
+    host = "127.0.0.1"
+    port = 8000
+    
+    # Parse command line arguments
+    args = sys.argv[1:]
+    i = 0
+    while i < len(args):
+        if args[i] == "--transport" and i + 1 < len(args):
+            transport = args[i + 1]
+            i += 2
+        elif args[i] == "--host" and i + 1 < len(args):
+            host = args[i + 1]
+            i += 2
+        elif args[i] == "--port" and i + 1 < len(args):
+            port = int(args[i + 1])
+            i += 2
+        else:
+            i += 1
+    
+    # Run with appropriate transport
+    if transport == "http":
+        print(f"Starting MCP server with HTTP transport on {host}:{port}")
+        mcp.run(transport="http", host=host, port=port)
+    elif transport == "sse":
+        print(f"Starting MCP server with SSE transport on {host}:{port}")
+        mcp.run(transport="sse", host=host, port=port)
+    else:
+        print("Starting MCP server with STDIO transport")
+        mcp.run(transport="stdio")
